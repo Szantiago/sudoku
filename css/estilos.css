@@ -3,8 +3,13 @@
 body
 {
     font-family: Arial;
+    background: rgba(239, 255, 248, 0.04);
 }
 
+hr
+{
+  color = #003300
+}
 
 #escenario
 {
@@ -23,8 +28,8 @@ body
     padding: 5px;
     font-weight: bold;
     font-size: 1.3em;
-    background-color: rgba(221, 221, 221, 0.16);
-    color: gray;
+    background-color: rgba(239, 255, 248, 0.16);
+    color: black;
 }
 
 .numero
@@ -34,9 +39,10 @@ body
     height: 30px;
     font-size: 1em;
     text-align: center;
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-color:rgba(1, 0, 0, 0.013);
     outline: none;
-    color: black;
+    color: gray;
     font-weight: bold;
 }
 

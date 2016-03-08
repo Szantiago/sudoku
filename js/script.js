@@ -23,11 +23,112 @@ window.onload = function()
         2. Un número no puede estar en la misma Fila.
         3. Un número no puede estar en la misma columna.
     */
+
     var validaSudoku = function(valor, id)
     {
         var parteID  = id.split("_");
-        console.log(parteID);
-        console.log(valor);
+        var m="", m2="", m3="";
+        var cont=0;
+        for(var x=0; x<sudoku[parteID[0]][parteID[1]].length;x++){
+          for(var y=0; y<sudoku[parteID[0]][parteID[1]].length;y++){
+            m=sudoku[parteID[0]][parteID[1]][x][y]==0 ? m+=nom_div([parteID[0]]+"_"+[parteID[1]]+"_"+[x]+"_"+[y]).value :m+=sudoku[parteID[0]][parteID[1]][x][y];
+          }
+        }
+
+        if(m.indexOf(valor) != -1){
+          cont=0;
+          m.split("");
+          for(var i =0; i<m.length;i++){
+            if(m[i]==valor){
+              cont++;
+              if(cont>1){
+                nom_div([parteID[0]]+"_"+[parteID[1]]).style.background="red";
+                nom_div([parteID[0]]+"_"+[parteID[1]]+"_"+[parteID[2]]+"_"+[parteID[3]]).style.background="red";
+              }
+              else
+              {
+                nom_div([parteID[0]]+"_"+[parteID[1]]).style.background="rgba(239, 255, 248, 0.16)";
+                nom_div([parteID[0]]+"_"+[parteID[1]]+"_"+[parteID[2]]+"_"+[parteID[3]]).style.background="rgba(239, 255, 248, 0.16)";
+              }
+            }
+          }
+        }
+
+      for(var x=0; x<sudoku[parteID[0]][parteID[1]].length;x++){
+        for(var y=0; y<sudoku[parteID[0]][parteID[1]].length;y++){
+            m2=sudoku[parteID[0]][x][parteID[2]][y]==0 ? m2+=nom_div([parteID[0]]+"_"+[x]+"_"+[parteID[2]]+"_"+[y]).value :m2+=sudoku[parteID[0]][x][parteID[2]][y];
+        }
+      }
+      if(m2.indexOf(valor) != -1){
+        cont=0;
+        m2.split("");
+        for(var i =0; i<m2.length;i++)
+        {
+          if(m2[i]==valor){
+            cont++;
+            if(cont>1)
+            {
+              for(var k=0;k<sudoku[parteID[0]][parteID[1]].length; k++)
+              {
+                for(var j=0;j<sudoku[parteID[0]][parteID[1]].length; j++)
+                {
+                  try {
+                    nom_div([parteID[0]]+"_"+[k]+"_"+[parteID[2]]+"_"+[j]).style.background="red";
+                  }
+                  catch(err) {
+
+                  }
+                }
+              }
+            }else{
+              try {
+                nom_div([parteID[0]]+"_"+[k]+"_"+[parteID[2]]+"_"+[j]).style.background="rgba(239, 255, 248, 0.16)";
+              }
+              catch(err) {
+
+              }
+            }
+          }
+        }
+      }
+
+      for(var x=0; x<sudoku[parteID[0]][parteID[1]].length;x++){
+        for(var y=0; y<sudoku[parteID[0]][parteID[1]].length;y++){
+          m3=sudoku[x][parteID[1]][y][parteID[3]]==0 ? m3+=nom_div([x]+"_"+[parteID[1]]+"_"+[y]+"_"+[parteID[3]]).value :m3+=sudoku[x][parteID[1]][y][parteID[3]];
+        }
+      }
+      if(m3.indexOf(valor) != -1){
+        cont=0;
+        m3.split("");
+        for(var i =0; i<m3.length;i++)
+        {
+          if(m3[i]==valor){
+            cont++;
+            if(cont>1)
+            {
+              for(var k=0;k<sudoku[parteID[0]][parteID[1]].length; k++)
+              {
+                for(var j=0;j<sudoku[parteID[0]][parteID[1]].length; j++)
+                {
+                  try {
+                    nom_div([k]+"_"+[parteID[1]]+"_"+[j]+"_"+[parteID[3]]).style.background="red";
+                  }
+                  catch(err) {
+
+                  }
+                }
+              }
+            }else{
+              try {
+                nom_div([k]+"_"+[parteID[1]]+"_"+[j]+"_"+[parteID[3]]).style.background="rgba(239, 255, 248, 0.16)";
+              }
+              catch(err) {
+
+              }
+            }
+          }
+        }
+      }
     }
 
     var nuevoSudoku = (function nuevoSudoku()

@@ -29,6 +29,8 @@ window.onload = function()
         var parteID  = id.split("_");
         var m="", m2="", m3="";
         var cont=0;
+        var bool = false, bool2 = false;
+
         for(var x=0; x<sudoku[parteID[0]][parteID[1]].length;x++){
           for(var y=0; y<sudoku[parteID[0]][parteID[1]].length;y++){
             m=sudoku[parteID[0]][parteID[1]][x][y]==0 ? m+=nom_div([parteID[0]]+"_"+[parteID[1]]+"_"+[x]+"_"+[y]).value :m+=sudoku[parteID[0]][parteID[1]][x][y];
@@ -68,25 +70,33 @@ window.onload = function()
             cont++;
             if(cont>1)
             {
+              bool=true;
+            }
+            else
+            {
               for(var k=0;k<sudoku[parteID[0]][parteID[1]].length; k++)
               {
                 for(var j=0;j<sudoku[parteID[0]][parteID[1]].length; j++)
                 {
                   try {
-                    nom_div([parteID[0]]+"_"+[k]+"_"+[parteID[2]]+"_"+[j]).style.background="red";
+                    nom_div([parteID[0]]+"_"+[k]+"_"+[parteID[2]]+"_"+[j]).style.background="rgba(239, 255, 248, 0.16)";
                   }
                   catch(err) {
-
                   }
                 }
               }
-            }else{
-              try {
-                nom_div([parteID[0]]+"_"+[k]+"_"+[parteID[2]]+"_"+[j]).style.background="rgba(239, 255, 248, 0.16)";
-              }
-              catch(err) {
-
-              }
+            }
+          }
+        }
+      }
+      if(bool){
+        for(var t=0; t<sudoku[parteID[0]][parteID[1]].length ; t++){
+          for(var p=0; p<sudoku[parteID[0]][parteID[1]].length ; p++){
+            try {
+              nom_div([parteID[0]]+"_"+[t]+"_"+[parteID[2]]+"_"+[p]).style.background="red";
+            }
+            catch(err)
+            {
             }
           }
         }
@@ -106,30 +116,40 @@ window.onload = function()
             cont++;
             if(cont>1)
             {
-              for(var k=0;k<sudoku[parteID[0]][parteID[1]].length; k++)
+              bool2=true;
+            }
+            else{
+              for(var h=0;h<sudoku[parteID[0]][parteID[1]].length; h++)
               {
-                for(var j=0;j<sudoku[parteID[0]][parteID[1]].length; j++)
+                for(var y=0;y<sudoku[parteID[0]][parteID[1]].length; y++)
                 {
                   try {
-                    nom_div([k]+"_"+[parteID[1]]+"_"+[j]+"_"+[parteID[3]]).style.background="red";
+                    nom_div([h]+"_"+[parteID[1]]+"_"+[y]+"_"+[parteID[3]]).style.background="rgba(239, 255, 248, 0.16)";
                   }
                   catch(err) {
-
                   }
                 }
-              }
-            }else{
-              try {
-                nom_div([k]+"_"+[parteID[1]]+"_"+[j]+"_"+[parteID[3]]).style.background="rgba(239, 255, 248, 0.16)";
-              }
-              catch(err) {
-
               }
             }
           }
         }
       }
+
+    if(bool2){
+      for(var q=0;q<sudoku[parteID[0]][parteID[1]].length; q++)
+      {
+        for(var w=0;w<sudoku[parteID[0]][parteID[1]].length; w++)
+        {
+          try {
+            nom_div([q]+"_"+[parteID[1]]+"_"+[w]+"_"+[parteID[3]]).style.background="red";
+            console.log("hello");
+          }
+          catch(err) {
+          }
+        }
+      }
     }
+  }
 
     var nuevoSudoku = (function nuevoSudoku()
     {
